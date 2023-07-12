@@ -1,0 +1,21 @@
+ALGORITHM checkpoint
+VAR
+    phr : STRING;
+    l : INTEGER:=0;
+    m : INTEGER:=1;
+    v : INTEGER:=0;
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO phr.length-1 DO
+    IF  phr[i] !=" " THEN
+        l := l + 1
+    END_IF
+    IF phr[i] == " " THEN
+        m := m + 1
+    END_IF
+    IF phr[i] == "a" OR phr[i] == "e" OR phr[i] == "i" OR phr[i] == "o" OR phr[i] == "u" THEN
+        v := v + 1
+    END_IF
+    END_FOR
+    write(l,m,v)
+END
