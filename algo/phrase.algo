@@ -6,6 +6,8 @@ VAR
     v : INTEGER:=0;
     i : INTEGER;
 BEGIN
+    write("écrire une phrase:")
+    read(phr)
     FOR i FROM 0 TO phr.length-1 DO
     IF  phr[i] !=" " THEN
         l := l + 1
