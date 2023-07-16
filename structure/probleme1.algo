@@ -1,0 +1,23 @@
+ALGORITHM probleme1
+VAR
+    Tab1 : ARRAY_OF INTEGER[];
+    Tab2 : ARRAY_OF INTEGER[];
+    i, j : INTEGER;
+    sum : INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO Tab1.length-1 STEP i++  DO
+        FOR j FROM 0 TO Tab2.length-1 STEP j++  DO
+            IF (Tab1[i]==Tab2[j]) THEN
+                Tab1[i]=0;
+                Tab2[j]=0;
+            END_IF
+        END_FOR
+    END_FOR
+    FOR i FROM 0 TO Tab1.length-1 STEP i++  DO
+        sum:=sum+Tab1[i]
+    END_FOR
+    FOR i FROM 0 TO Tab2.length-1 STEP i++  DO
+        sum:=sum+Tab2[i]
+    END_FOR
+    write(sum)
+END

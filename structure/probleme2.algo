@@ -1,0 +1,69 @@
+ALGORITHM ProduitScalaire
+PROCEDURE dot_product(v1: ARRAY_OF INTEGER[], v2: ARRAY_OF INTEGER[], VAR ps: INTEGER)
+VAR
+    i: INTEGER;
+BEGIN
+    ps := 0
+    FOR i FROM 0 TO v1.length - 1 DO
+        ps := ps + v1[i] * v2[i]
+    END_FOR
+END
+ALGORITHM VerifierOrthogonalite
+VAR
+    n: INTEGER;
+    v1, v2: ARRAY_OF INTEGER;
+    i: INTEGER;
+    ps: INTEGER;
+BEGIN
+    write("Entrez le nombre de paires de vecteurs")
+    read(n)
+    FOR i FROM 1 TO n DO
+        write("Entrez vecteur v1")
+        read(v1)
+        write("Entrez vecteur v2")
+        read(v2)
+        dot_product(v1, v2, ps)
+        IF ps = 0 THEN
+            write("Les vecteurs v1 et v2 sont orthogonaux.")
+        ELSE
+            write("Les vecteurs v1 et v2 ne sont pas orthogonaux.")
+        END_IF
+    END_FOR
+END
+
+//utilisation d'une fonction
+
+ALGORITHM ProduitScalaire
+FUNCTION dot_product(v1: ARRAY_OF INTEGER[], v2: ARRAY_OF INTEGER[]):INTEGER
+VAR
+    i: INTEGER;
+    ps: INTEGER;
+BEGIN
+    ps := 0
+    FOR i FROM 0 TO v1.length - 1 DO
+        ps := ||v1[i]|| * ||v2[i]|| * cos(v1[i],v2[i])
+    END_FOR
+    RETURN ps
+END
+ALGORITHM VerifierOrthogonalite
+VAR
+    n: INTEGER;
+    v1, v2: ARRAY_OF INTEGER;
+    i: INTEGER;
+    ps: INTEGER;
+BEGIN
+    write("Entrez le nombre de paires de vecteurs")
+    read(n)
+    FOR i FROM 1 TO n DO
+        write("Entrez vecteur v1")
+        read(v1)
+        write("Entrez vecteur v2")
+        read(v2)
+        ps := dot_product(v1, v2)
+        IF ps = 0 THEN
+            write("Les vecteurs v1 et v2 sont orthogonaux.")
+        ELSE
+            write("Les vecteurs v1 et v2 ne sont pas orthogonaux.")
+        END_IF
+    END_FOR
+END
